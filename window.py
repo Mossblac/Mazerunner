@@ -43,3 +43,50 @@ class Line:
         def draw(self, canvas, fill_color):
              canvas.create_line(self.p1.x, self.p1.y, self.p2.x, self.p2.y, fill=fill_color, width=2)
             
+class Cell:
+        def __init__(
+                  self, x1, y1, x2, y2, win,
+                    has_left_wall=True, has_right_wall=True,
+                      has_top_wall=True, has_bottom_wall=True
+        ):
+             self.x1 = x1
+             self.y1 = y1
+             self.x2 = x2
+             self.y2 = y2
+             self.win = win
+             self.has_left_wall = has_left_wall
+             self.has_right_wall = has_right_wall
+             self.has_top_wall = has_top_wall
+             self.has_bottom_wall = has_bottom_wall
+
+        def draw(self):
+            if self.has_left_wall == True:
+                point1 = Point(self.x1, self.y1)
+                point2 = Point(self.x1, self.y2)
+                line_l_wall = Line(point1, point2)
+                line_l_wall.draw(self.win.canvas, "black")
+            if self.has_bottom_wall == True:
+                point1 = Point(self.x1, self.y2)
+                point2 = Point(self.x2, self.y2)
+                line_b_wall = Line(point1, point2)
+                line_b_wall.draw(self.win.canvas, "black")
+            if self.has_right_wall == True:
+                point1 = Point(self.x2, self.y1)
+                point2 = Point(self.x2, self.y2)
+                line_r_wall = Line(point1, point2)
+                line_r_wall.draw(self.win.canvas, "black")
+            if self.has_top_wall == True:
+                point1 = Point(self.x1, self.y1)
+                point2 = Point(self.x2, self.y1)
+                line_t_wall = Line(point1, point2)
+                line_t_wall.draw(self.win.canvas, "black")
+                 
+                 
+                 
+                 
+                  
+                  
+             
+             
+             
+     

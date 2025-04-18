@@ -1,6 +1,8 @@
 
 from window import *
-from points_and_lines import *
+
+
+
 
 
 def main():
@@ -8,8 +10,12 @@ def main():
     
 
     display = Window(1280, 720)
-    display.draw_line(line1, "red")
-    display.draw_line(line2, "black")
+    cell = Cell(260, 540, 360, 640, display, True, True, True, True)
+    cell2 = Cell(360, 540, 460, 640 , display, True, False, True, True)
+
+
+    cell.draw()
+    cell2.draw()
     display.wait_for_close()
 
 if __name__ == "__main__":
