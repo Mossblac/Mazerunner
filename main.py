@@ -8,9 +8,9 @@ from window import *
 def main():
     
 
-    display = Window(800, 800)
-    cell_start = Cell(10, 10, 60, 60, display, True, False, True, True)
-    cell2 = Cell(60, 10, 110, 60 , display, False, False, True, True)
+    display = Window(805, 805)
+    cell_start = Cell(5, 5, 55, 55, display, True, False, True, True)
+    cell2 = Cell(55, 5, 105, 55 , display, False, False, True, True)
     cell_start.draw()
     cell2.draw()
     cell_start.draw_move(cell2, False)
