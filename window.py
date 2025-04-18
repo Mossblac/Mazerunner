@@ -80,6 +80,21 @@ class Cell:
                 point2 = Point(self.x2, self.y1)
                 line_t_wall = Line(point1, point2)
                 line_t_wall.draw(self.win.canvas, "black")
+
+        def draw_move(self, to_cell, undo=False):
+             center_x = (self.x1 + self.x2) / 2 
+             center_y = (self.y1 + self.y2) / 2
+             self.center = Point(center_x, center_y)
+             to_center_x = (to_cell.x1 + to_cell.x2) / 2
+             to_center_y = (to_cell.y1 + to_cell.y2) / 2 
+             to_cell.center = Point(to_center_x, to_center_y)   
+             move_line = Line(self.center, to_cell.center)
+             if undo == False:
+                  move_line.draw(self.win.canvas, "red")
+             if undo == True:
+                  move_line.draw(self.win.canvas, "gray")     
+            
+
                  
                  
                  
