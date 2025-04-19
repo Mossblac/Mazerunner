@@ -1,20 +1,20 @@
-
-from window import *
-
-
-
+from graphics import Window
+from maze import Maze
 
 
 def main():
-    
+    num_rows = 12
+    num_cols = 16
+    margin = 50
+    screen_x = 800
+    screen_y = 600
+    cell_size_x = (screen_x - 2 * margin) / num_cols
+    cell_size_y = (screen_y - 2 * margin) / num_rows
+    win = Window(screen_x, screen_y)
 
-    display = Window(805, 805)
-    cell_start = Cell(5, 5, 55, 55, display, True, False, True, True)
-    cell2 = Cell(55, 5, 105, 55 , display, False, False, True, True)
-    cell_start.draw()
-    cell2.draw()
-    cell_start.draw_move(cell2, False)
-    display.wait_for_close()
+    maze = Maze(margin, margin, num_rows, num_cols, cell_size_x, cell_size_y, win)
 
-if __name__ == "__main__":
-    main()
+    win.wait_for_close()
+
+
+main()
