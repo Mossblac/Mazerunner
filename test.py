@@ -36,7 +36,17 @@ class Tests(unittest.TestCase):
             len(maze0._cells * len(maze0._cells[0])), 100
         )
 
-   
+    def test_if_open(self):
+        num_rows = 10
+        num_cols = 10
+        maze0 = Maze(0, 0, num_rows, num_cols, 50, 50)
+        self.assertEqual(maze0._cells[0][0].has_left_wall, False)
+
+    def test_if_exit(self):
+        num_rows = 10
+        num_cols = 10
+        maze0 = Maze(0, 0, num_rows, num_cols, 50, 50)
+        self.assertEqual(maze0._cells[-1][-1].has_right_wall, False)
         
 if __name__ == "__main__":
     unittest.main()
