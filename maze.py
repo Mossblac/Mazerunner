@@ -16,8 +16,6 @@ class Maze:
         seed=None
     ):
         self._cells = []
-        self.visited = set()
-        self.repath = []
         self._x1 = x1
         self._y1 = y1
         self._num_rows = num_rows
@@ -29,6 +27,7 @@ class Maze:
         self._create_cells()
         self._break_entrance_and_exit()
         self._break_walls_r(0, 0)
+        self._reset_cells_visited()
         
         if seed:
             random.seed(seed)
@@ -57,7 +56,7 @@ class Maze:
         if self._win is None:
             return
         self._win.redraw()
-        time.sleep(0.03)
+        time.sleep(0.02)
 
     def _break_entrance_and_exit(self):
         open = self._cells[0][0]
@@ -120,7 +119,12 @@ class Maze:
             self._break_walls_r(next_index[0], next_index[1])
 
             
-            
+    def _reset_cells_visited(self):
+        for i in range(self._num_cols):
+            for j in range(self._num_rows):
+                self._cells[i][j].visited=False
+
+
                 
            
 
