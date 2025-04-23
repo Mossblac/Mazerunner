@@ -13,6 +13,8 @@ class Cell:
         self._y2 = None
         self._win = win
         self.visited = False
+        self.re_vis = False
+        
 
     def draw(self, x1, y1, x2, y2):
         if self._win is None:
@@ -47,13 +49,16 @@ class Cell:
             self._win.draw_line(line, fill_color="black")
 
     def draw_move(self, to_cell, undo=False):
-        half_length = abs(self._x2 - self._x1) // 2
-        x_center = half_length + self._x1
-        y_center = half_length + self._y1
+        half_width = abs(self._x2 - self._x1) // 2
+        half_height = abs(self._y2 - self._y1) // 2
+        x_center = self._x1 + half_width
+        y_center = self._y1 + half_height
 
-        half_length2 = abs(to_cell._x2 - to_cell._x1) // 2
-        x_center2 = half_length2 + to_cell._x1
-        y_center2 = half_length2 + to_cell._y1
+    
+        half_width2 = abs(to_cell._x2 - to_cell._x1) // 2
+        half_height2 = abs(to_cell._y2 - to_cell._y1) // 2
+        x_center2 = to_cell._x1 + half_width2
+        y_center2 = to_cell._y1 + half_height2
 
         fill_color = "red"
         if undo:
