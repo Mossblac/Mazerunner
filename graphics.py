@@ -1,5 +1,7 @@
-from tkinter import Tk, BOTH, Canvas
+from tkinter import *
 import time
+
+
 
 
 class Window:
@@ -7,9 +9,11 @@ class Window:
         self.__root = Tk()
         self.__root.title("Maze Solver")
         self.__root.protocol("WM_DELETE_WINDOW", self.close)
-        self.__canvas = Canvas(self.__root, bg="black", height=height, width=width)
-        self.__canvas.pack(fill=BOTH, expand=1)
-        self.__running = False
+        self.canvas = Canvas(self.__root, bg="black", height=height, width=width)
+        self.canvas.pack(fill=BOTH, expand=1)
+        self.canvas.bind("<Escape>", self.esc_close)
+        self.canvas.focus_set()
+        self.__running = False  
 
     def redraw(self):
         self.__root.update_idletasks()
@@ -23,11 +27,15 @@ class Window:
         print("window closed...")
 
     def draw_line(self, line, fill_color="white"):
-        line.draw(self.__canvas, fill_color)
+        line.draw(self.canvas, fill_color)
+
+    def esc_close(self, event):
+        self.__running = False
 
     def close(self):
         self.__running = False
 
+    
 
 class Point:
     def __init__(self, x, y):
